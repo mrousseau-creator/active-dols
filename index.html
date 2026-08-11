@@ -393,6 +393,7 @@ document.getElementById("file-restore").onchange=e=>{
     try{
       const p=JSON.parse(r.result);
       if(!p.dols) throw new Error("bad file");
+      if(!p.knocks) p.knocks={};
       if(!confirm("Replace everything on this device with the backup?")) return;
       state=p; save(); render(); toast("Backup restored");
     }catch(err){ toast("That file isn't a valid backup"); }
